@@ -1,0 +1,25 @@
+GoogleColabメモ
+
+#ファイルアップロード
+from google.colab import files
+uploaded = files.upload()
+
+# アップロードファイルの読み込み
+import pandas as pd
+import io
+data = pd.read_csv(io.StringIO(uploaded['sample.csv'].decode('utf-8')), header=-1)
+data.head()
+
+
+##GoogleDriveしたいとき
+from google.colab import drive
+drive.mount('/content/gdrive')
+
+==>認証済ます
+
+#diveディレクトリ内のファイルを読み込む
+!mkdir -p drive
+!google-drive-ocamlfuse drive
+!ls drive/"Colab Notebooks"/data
+
+参考https://qiita.com/uni-3/items/201aaa2708260cc790b8
